@@ -1,0 +1,21 @@
+# execute with docker-compose up --build
+version: '3'
+services:
+  sut:
+    build: .
+    depends_on:
+    - goss
+    environment: 
+      PATH: $PATH:/goss
+      GOSS_FILE: /goss-file/goss.yaml
+    command: goss validate --format documentation
+    volumes:
+    - ./test/goss:/goss-file
+    - goss-executable:/goss
+  goss:
+    image: aelsabbahy/goss
+    command: goss --version
+    volumes:
+    - goss-executable:/goss
+volumes:
+  goss-executable:
