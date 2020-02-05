@@ -1,0 +1,9 @@
+command:
+  npm config get registry:
+    exit-status: 0
+    stdout:
+    - https://registry.npmjs.org/
+  npm config get @sap:registry:
+    exit-status: 0
+    stdout:
+    - https://npm.sap.com/
